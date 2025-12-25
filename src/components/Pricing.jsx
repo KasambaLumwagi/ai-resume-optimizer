@@ -30,7 +30,6 @@ const Pricing = () => {
                 'Deep Content Analysis',
                 'AI Action Verb Suggestions',
                 'Specific Bullet Point Rewrites',
-                'LinkedIn Profile Optimization',
                 'Priority Email Support'
             ],
             cta: 'Upgrade to Pro',
@@ -43,7 +42,7 @@ const Pricing = () => {
             description: 'Full-service career branding toolkit.',
             features: [
                 'Everything in Pro',
-                '1-on-1 Human Coach Review',
+                'LinkedIn Profile Optimization',
                 'Cover Letter Generator',
                 'Interview Prep AI Agent',
                 'Personal Branding Guide'
