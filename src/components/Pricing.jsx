@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Check, Zap } from 'lucide-react';
+import { PAYMENT_LINKS } from '../config';
 
 const Pricing = () => {
     const [isAnnual, setIsAnnual] = useState(false);
@@ -32,6 +33,7 @@ const Pricing = () => {
                 'Specific Bullet Point Rewrites',
                 'Priority Email Support'
             ],
+            type: 'pro',
             cta: 'Upgrade to Pro',
             highlight: true
         },
@@ -47,10 +49,26 @@ const Pricing = () => {
                 'Interview Prep AI Agent',
                 'Personal Branding Guide'
             ],
+            type: 'executive',
             cta: 'Get Executive',
             highlight: false
         }
     ];
+
+    const handleUpgrade = (planType) => {
+        let link = '';
+        if (planType === 'pro') {
+            link = isAnnual ? PAYMENT_LINKS.YEARLY : PAYMENT_LINKS.MONTHLY;
+        } else if (planType === 'executive') {
+            link = isAnnual ? PAYMENT_LINKS.EXECUTIVE_YEARLY : PAYMENT_LINKS.EXECUTIVE_MONTHLY;
+        }
+
+        if (link) {
+            window.location.href = link;
+        } else {
+            alert('Please configure payment links in src/config.js');
+        }
+    };
 
     return (
         <section id="pricing" style={{ padding: '6rem 1rem', position: 'relative' }}>
@@ -173,6 +191,7 @@ const Pricing = () => {
                             </div>
 
                             <button
+                                onClick={() => plan.price !== '$0' ? handleUpgrade(plan.type) : null}
                                 className={plan.highlight ? 'glow-button' : ''}
                                 style={{
                                     width: '100%',
@@ -182,11 +201,11 @@ const Pricing = () => {
                                     background: plan.highlight ? undefined : 'transparent',
                                     color: 'white',
                                     fontWeight: 600,
-                                    cursor: 'pointer',
+                                    cursor: plan.price !== '$0' ? 'pointer' : 'default',
                                     transition: 'background 0.3s'
                                 }}
-                                onMouseOver={(e) => !plan.highlight && (e.target.style.background = 'rgba(255,255,255,0.05)')}
-                                onMouseOut={(e) => !plan.highlight && (e.target.style.background = 'transparent')}
+                                onMouseOver={(e) => !plan.highlight && plan.price !== '$0' && (e.target.style.background = 'rgba(255,255,255,0.05)')}
+                                onMouseOut={(e) => !plan.highlight && plan.price !== '$0' && (e.target.style.background = 'transparent')}
                             >
                                 {plan.cta}
                             </button>

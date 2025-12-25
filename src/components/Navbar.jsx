@@ -40,10 +40,15 @@ const Navbar = () => {
 
       <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
         <a href="#" style={{ color: 'var(--text-main)', textDecoration: 'none', fontWeight: 500, fontSize: '0.9rem' }}>Features</a>
-        <a href="#" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontWeight: 500, fontSize: '0.9rem' }}>How it works</a>
+        <button
+          onClick={() => document.getElementById('how-it-works').scrollIntoView({ behavior: 'smooth' })}
+          style={{ background: 'none', border: 'none', color: 'var(--text-muted)', fontWeight: 500, fontSize: '0.9rem', cursor: 'pointer', fontFamily: 'var(--font-sans)' }}
+        >
+          How it works
+        </button>
         <button
           onClick={() => document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' })}
-          style={{ background: 'none', border: 'none', color: 'var(--text-muted)', fontWeight: 500, fontSize: '0.9rem', cursor: 'pointer' }}
+          style={{ background: 'none', border: 'none', color: 'var(--text-muted)', fontWeight: 500, fontSize: '0.9rem', cursor: 'pointer', fontFamily: 'var(--font-sans)' }}
         >
           Pricing
         </button>

@@ -4,6 +4,8 @@ import Hero from './components/Hero';
 import OptimizationForm from './components/OptimizationForm';
 import Results from './components/Results';
 import Pricing from './components/Pricing';
+import HowItWorks from './components/HowItWorks';
+import CoverLetterGenerator from './components/CoverLetterGenerator';
 
 const App = () => {
   const [jobDescription, setJobDescription] = useState('');
@@ -147,6 +149,14 @@ const App = () => {
           </div>
         )}
 
+        {results && (
+          <CoverLetterGenerator
+            jobDescription={jobDescription}
+            resumeText={resumeText}
+          />
+        )}
+
+        <HowItWorks />
         <Pricing />
       </main>
 
